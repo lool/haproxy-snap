@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -e
+
+cd "$SNAP_DATA"
+
+while :; do
+    set -- *
+    if [ "$@" != "*" ]; then
+        $SNAP/bin/haproxy -- "$@"
+    fi
+    sleep 5
+done
+
